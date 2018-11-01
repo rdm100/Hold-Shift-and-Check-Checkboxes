@@ -98,7 +98,7 @@
 <script>
   let lastChecked;
   let inBetween = false;
-  
+
   function handleClick(e){
     // console.log(e);You are
     if(e.shiftKey && this.checked){
@@ -107,6 +107,10 @@
         if(element === this || element === lastChecked){
           inBetween = !inBetween;
           console.log("Checking boxes in between first and last");
+        }
+
+        if(inBetween){
+          element.checked = true;
         }
       });
     }
