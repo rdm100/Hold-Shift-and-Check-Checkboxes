@@ -96,15 +96,19 @@
   </div>
 
 <script>
-  let lastChecked;
+  let firstChecked;
   let inBetween = false;
 
   function handleClick(e){
-    // console.log(e);You are
+    console.log(e);
+    console.log(this);
+
     if(e.shiftKey && this.checked){
+
       checkboxes.forEach(element => {
         console.log(element);
-        if(element === this || element === lastChecked){
+
+        if(element === this || element === firstChecked){
           inBetween = !inBetween;
           console.log("Checking boxes in between first and last");
         }
@@ -112,12 +116,15 @@
         if(inBetween){
           element.checked = true;
         }
+
       });
+      
     }
-    lastChecked = this;
+    firstChecked = this;
   }
 
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
   checkboxes.forEach(element => {
     element.addEventListener("click", handleClick);
   });
